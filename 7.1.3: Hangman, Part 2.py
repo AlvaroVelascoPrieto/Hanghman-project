@@ -22,4 +22,5 @@ def get_guess(x):
     return guess
 
 get_guess(gol)
+
 print(guess)
