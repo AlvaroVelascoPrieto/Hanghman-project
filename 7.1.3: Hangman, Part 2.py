@@ -1,11 +1,12 @@
 secret_word = "Alvaro"
 gol= False
 
-def get_guess(x):
+
     while True:
         if x is True:
-            break
+            return guess
         else:
+            global guess
             guess = input("Enter a lowercase letter: ")
             for i in guess:
                 if i.islower()==False:
@@ -19,8 +20,7 @@ def get_guess(x):
                 else:
                     break
 
-    return guess
 
-get_guess(gol)
+
 
 print(guess)
