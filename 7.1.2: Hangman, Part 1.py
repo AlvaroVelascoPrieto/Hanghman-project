@@ -1,31 +1,37 @@
+#import the random labrary to use later
 import random
 
+#these are the secret words that will be used to guess in our game
 secret_words = ["apple", "banana", "car", "computer", "programming", "science",\
                 "laboratory", "printer", "box"]
+#this two methods pick a random word and set it to be lowercase to avoid case sensitivity
 secret_word = random.choice(secret_words)
 secret_word = secret_word.lower()
+
+#this function gets the user's guess
 def retrieve_guess():
     while (1):
-        guess = input("Enter a letter:")
-        guess.lower()
-        if len(guess) == 1:
+        guess = input("Enter a letter:")      #Asks the user for input
+        guess.lower()                     #Sets the input to lowercase to avoid case sensitivity
+        if len(guess) == 1:             #If the user input is 1 character it returns the guess
             return guess
         else:
-            print("Only 1 letter!")
+            print("Only 1 letter!")      #if it is more than one character it loops and asks the user for input again
             continue
 
-def update_dashes():
+def update_dashes():                 #This function is the main program body
+    secret_word = random.choice(secret_words)
     try:
         dashes = ""
-        guesses_left = 10
-        for i in range(len(secret_word)):
+        guesses_left = 10                       #set the number of user guesses
+        for i in range(len(secret_word)):           #creates the dashes variable according to the secret word
             dashes = dashes + "-"
-        while guesses_left != 0:
+        while guesses_left != 0:                #while the user still has guesses left...
             misses_on_one_trial = 0
-            print(dashes)
-            print("You have " + str(guesses_left) + " incorrect guesses left")
+            print(dashes)                           #prints the dashes
+            print("You have " + str(guesses_left) + " incorrect guesses left")     #prints the number of guesses the user has left
+            dash_count = 0
             for i, dashcheck in enumerate(dashes):
-                dash_count = 0
                 if dashcheck == "-":
                     dash_count = dash_count + 1
                 else:
