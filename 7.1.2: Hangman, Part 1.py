@@ -8,6 +8,7 @@ secret_words = ["apple", "banana", "car", "computer", "programming", "science",\
 secret_word = random.choice(secret_words)
 secret_word = secret_word.lower()
 
+
 # this function gets the user's guess
 def retrieve_guess():
     while (1):
@@ -18,6 +19,7 @@ def retrieve_guess():
         else:
             print("Only 1 letter!")      # if it is more than one character it loops and asks the user for input again
             continue
+
 
 def update_dashes():                 # This function is the main program body
     secret_word = random.choice(secret_words)
@@ -31,7 +33,7 @@ def update_dashes():                 # This function is the main program body
             print(dashes)                           # prints the dashes
             print("You have " + str(guesses_left) + " incorrect guesses left")  # prints the number of guesses left
             dash_count = 0                                 # variable created to see if there is any unknown letter left
-            for i, dashcheck in enumerate(dashes):              # hecks for unknown letters in the word
+            for i, dashcheck in enumerate(dashes):              # checks for unknown letters in the word
                 if dashcheck == "-":
                     dash_count = dash_count + 1
                 else:
@@ -48,24 +50,23 @@ def update_dashes():                 # This function is the main program body
                     guesses_left = guesses_left - 1             # subtracts on guess if the letter was not in the word
             else:
                 print("You won!")                           # user wins if the word is completed
-
                 break
-            if guesses_left==0:
+            if guesses_left==0:                    # if the user runs out of guesses the game ends
                 print("You ran out of guesses! I am sorry!")
             else:
                 continue
-    except KeyboardInterrupt:
+    except KeyboardInterrupt:       # catches a keyboard interruption (ctrl+c) and stops the program
         print("Ending...")
 
 
-while True:
-    update_dashes()
-    restart = input("Do you want to play again?(yes/no)")
-    restart.lower()
-    if restart =="yes" or "Yes":
+while True:                                 # now we run the program
+    update_dashes()                                 # we call the update_dashes
+    restart = input("Do you want to play again?(yes/no)")   # once the game ends we ask if he/she wants to play again
+    restart.lower()                             # set the answer to lowercase
+    if restart =="yes" or "Yes":        # if they choose yes, the game restarts
         continue
-    if restart =="no" or "No":
+    if restart =="no" or "No":        # if they choose no, the program ends
         break
     else:
         print("Input not recognized!! Closing...")
-        break
+        break                   # if the input is not recognized it prints a warning and the program ends
